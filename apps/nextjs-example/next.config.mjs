@@ -5,7 +5,11 @@ const nextConfig = {
   // output: "export",
   reactStrictMode: true,
   transpilePackages: ["wallet-adapter-react", "wallet-adapter-plugin"],
-  // assetPrefix: isProd ? "/aptos-wallet-adapter" : "",
+  
+  env: {
+    BASE_URL: process.env.PLATFORM_WALLET_ADDRESS,
+  },
+  assetPrefix: isProd ? "/aptos-wallet-adapter" : "",
   // basePath: isProd ? "/aptos-wallet-adapter" : "",
   webpack: (config) => {
     config.resolve.fallback = { "@solana/web3.js": false };
