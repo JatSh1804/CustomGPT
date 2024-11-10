@@ -33,7 +33,7 @@ import {
 } from "@aptos-labs/wallet-adapter-react";
 import { init as initTelegram } from "@telegram-apps/sdk";
 import { AlertCircle } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 
 // Imports for registering a browser extension wallet plugin on page load
 import { MyWallet } from "@/utils/standardWallet";

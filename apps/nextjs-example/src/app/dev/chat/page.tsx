@@ -23,7 +23,7 @@ import ChevronBox from './chevronBox'
 import { useToast } from "@/hooks/use-toast";
 
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
-import AptosClient from '@/utils/aptos/client'
+
 
 
 interface ChatInstance {
@@ -191,13 +191,9 @@ export default function AdvancedChatBoxComponent() {
                 }
             }
         };
-        const blockchainInit = async () => {
-            const aptos = await AptosClient();
-            console.log('Initializing Aptos')
-        }
+
 
         initUser();
-        blockchainInit();
     }, []);
 
 
@@ -452,7 +448,7 @@ export default function AdvancedChatBoxComponent() {
         toast({
             title: "Success!",
             description: "The operation was completed successfully.",
-            variant: 'success'
+            variant: 'default'
         });
     };
 
