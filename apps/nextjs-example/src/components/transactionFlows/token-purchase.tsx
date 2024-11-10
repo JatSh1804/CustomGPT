@@ -44,8 +44,8 @@ const TokenPurchase = () => {
             data: {
                 // type: 'entry_function_payload',
                 function: '0x1::coin::transfer',
-                type_arguments: ['0x1::aptos_coin::AptosCoin'],
-                arguments: [recipientAddress, amount.toString()],
+                typeArguments: ['0x1::aptos_coin::AptosCoin'],
+                functionArguments: [recipientAddress, amount],
             }
         };
 
