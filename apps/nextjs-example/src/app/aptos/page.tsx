@@ -39,6 +39,7 @@ import { AlertCircle } from "lucide-react";
 import { MyWallet } from "@/utils/standardWallet";
 import { registerWallet } from "@aptos-labs/wallet-standard";
 import { useEffect } from "react";
+import TokenPurchase from "@/components/transactionFlows/token-purchase";
 
 // Example of how to register a browser extension wallet plugin.
 // Browser extension wallets should call registerWallet once on page load.
@@ -100,6 +101,7 @@ export default function Home() {
       {connected && (
         <>
           <TransactionParameters />
+          <TokenPurchase />
           <SingleSigner />
           <Sponsor />
           <MultiAgent />
