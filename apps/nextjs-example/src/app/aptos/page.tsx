@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useAutoConnect } from "@/components/AutoConnectProvider";
 import { DisplayValue, LabelValueGrid } from "@/components/LabelValueGrid";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -122,14 +122,14 @@ function WalletSelection() {
             <div className="text-sm text-muted-foreground">shadcn/ui</div>
             <ShadcnWalletSelector />
           </div>
-          <div className="flex flex-col gap-4 items-center">
+          {/* <div className="flex flex-col gap-4 items-center">
             <div className="text-sm text-muted-foreground">Ant Design</div>
             <AntdWalletSelector />
-          </div>
-          <div className="flex flex-col gap-4 items-center">
+          </div> */}
+          {/* <div className="flex flex-col gap-4 items-center">
             <div className="text-sm text-muted-foreground">Material UI</div>
             <MuiWalletSelector />
-          </div>
+          </div> */}
         </div>
         <label className="flex items-center gap-4 cursor-pointer">
           <Switch
