@@ -40,7 +40,7 @@ const TokenPurchase = () => {
         const recipientAddress = process.env.PLATFORM_WALLET_ADDRESS || '0xYourPlatformWalletAddress'; // Replace with your platform wallet address
         const amount = 1; // Amount of tokens to send (in smallest unit)
 
-        const payload: InputTransactionDat = {
+        const payload: InputTransactionData = {
             data: {
                 // type: 'entry_function_payload',
                 function: '0x1::coin::transfer',
