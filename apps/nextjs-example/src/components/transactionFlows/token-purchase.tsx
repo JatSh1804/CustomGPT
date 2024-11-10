@@ -87,7 +87,7 @@ const TokenPurchase = () => {
                 const { data, error: updateError } = await supabase
                     .from('user_profiles') // Replace with your table name
                     .update({ tokens_remaining: newValue }) // Update with the new value
-                    .eq('tokens_remaining', user.id)
+                    .eq('auth_id',userId)
                     .select();
 
 
