@@ -1,10 +1,21 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["GAID", "NEXT_PUBLIC_APTOS_API_KEY"],
+  "globalEnv": [
+    "GAID",
+    "NEXT_PUBLIC_APTOS_API_KEY",
+    "OPENAI_KEY",
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+  ],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**"
+      ]
     },
     "lint": {
       "outputs": []
