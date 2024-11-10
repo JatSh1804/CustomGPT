@@ -3,14 +3,14 @@ const isProd = process.env.NODE_ENV === "production";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: "export",
+  // assetPrefix: isProd ? "/aptos-wallet-adapter" : "",
+  // basePath: isProd ? "/aptos-wallet-adapter" : "",
   reactStrictMode: true,
   transpilePackages: ["wallet-adapter-react", "wallet-adapter-plugin"],
   
   env: {
-    BASE_URL: process.env.PLATFORM_WALLET_ADDRESS,
+    BASE_URL: process.env.BASE_URL,
   },
-  assetPrefix: isProd ? "/aptos-wallet-adapter" : "",
-  // basePath: isProd ? "/aptos-wallet-adapter" : "",
   webpack: (config) => {
     config.resolve.fallback = { "@solana/web3.js": false };
     return config;
