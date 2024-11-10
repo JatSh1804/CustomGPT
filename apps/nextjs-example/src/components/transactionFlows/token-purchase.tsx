@@ -43,9 +43,9 @@ const TokenPurchase = () => {
         console.log('Debug:-->RecipientAddress', recipientAddress);
 
         const payload: InputTransactionData = {
-            data: {
+            tradata: {
                 // type: 'entry_function_payload',
-                function: '0x1::coin::transfer',
+                function: '0x1::aptos_account::transfer_coins',
                 typeArguments: ['0x1::aptos_coin::AptosCoin'],
                 functionArguments: [recipientAddress, amount],
             }
