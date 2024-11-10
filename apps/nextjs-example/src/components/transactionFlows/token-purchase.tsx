@@ -8,6 +8,7 @@ import { createClient } from '@/utils/supabase/client';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { useToast } from '../ui/use-toast';
 import { redirect } from 'next/navigation';
+import { InputTransactionData } from "@aptos-labs/wallet-adapter-core"
 const TokenPurchase = () => {
     const { toast } = useToast();
 
@@ -39,11 +40,13 @@ const TokenPurchase = () => {
         const recipientAddress = process.env.PLATFORM_WALLET_ADDRESS || '0xYourPlatformWalletAddress'; // Replace with your platform wallet address
         const amount = 1; // Amount of tokens to send (in smallest unit)
 
-        const payload = {
-            type: 'entry_function_payload',
-            function: '0x1::coin::transfer',
-            type_arguments: ['0x1::aptos_coin::AptosCoin'],
-            arguments: [recipientAddress, amount.toString()],
+        const payload: InputTransactionDat = {
+            data: {
+                // type: 'entry_function_payload',
+                function: '0x1::coin::transfer',
+                type_arguments: ['0x1::aptos_coin::AptosCoin'],
+                arguments: [recipientAddress, amount.toString()],
+            }
         };
 
         try {
