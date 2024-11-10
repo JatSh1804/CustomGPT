@@ -3,6 +3,7 @@
 import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 import { BitgetWallet } from "@bitget-wallet/aptos-wallet-adapter";
 import { MartianWallet } from "@martianwallet/aptos-wallet-adapter";
+import { WelldoneWallet, WelldoneWalletName } from "@welldone-studio/aptos-wallet-adapter"
 import { MSafeWalletAdapter } from "@msafe/aptos-wallet-adapter";
 import { OKXWallet } from "@okwallet/aptos-wallet-adapter";
 import { PontemWallet } from "@pontem/wallet-adapter-plugin";
@@ -29,6 +30,7 @@ export const WalletProvider = ({ children }: PropsWithChildren) => {
     new PontemWallet(),
     new TrustWallet(),
     new OKXWallet(),
+    new WelldoneWallet()
   ];
 
   return (

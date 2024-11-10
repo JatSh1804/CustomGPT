@@ -38,6 +38,7 @@ import { AlertCircle } from "lucide-react";
 // Imports for registering a browser extension wallet plugin on page load
 import { MyWallet } from "@/utils/standardWallet";
 import { registerWallet } from "@aptos-labs/wallet-standard";
+import { useEffect } from "react";
 
 // Example of how to register a browser extension wallet plugin.
 // Browser extension wallets should call registerWallet once on page load.
@@ -55,6 +56,9 @@ if (isTelegramMiniApp) {
 
 export default function Home() {
   const { account, connected, network, wallet, changeNetwork } = useWallet();
+  useEffect(() => {
+    console.log('Debug:-->Account Info:', account);
+  }, [account])
 
   return (
     <main className="flex flex-col w-full max-w-[1000px] p-6 pb-12 md:px-8 gap-6">
