@@ -46,7 +46,7 @@ const TokenPurchase = () => {
             data: {
                 // type: 'entry_function_payload',
                 function: '0x1::coin::transfer',
-                typeArguments: ['0x1::aptos_coin::AptosCoin'],
+                typeArguments: ['0x1::aptos_account::transfer_coins'],
                 functionArguments: [recipientAddress, amount],
             }
         };
@@ -65,7 +65,7 @@ const TokenPurchase = () => {
             console.log('Transaction response:', response);
 
 
-            if (response && response.success) {  // Check if the transaction was successful
+            if (response && response.hash) {  // Check if the transaction was successful
                 const userId = user.id; // Replace with the actual user ID
                 // Replace with the number of tokens to subtract
                 console.log('Debug:-->AuthId:', userId)
