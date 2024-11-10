@@ -11,6 +11,12 @@ const nextConfig = {
     config.resolve.fallback = { "@solana/web3.js": false };
     return config;
   },
+  images: {
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'lh3.googleusercontent.com'
+    },]
+  }
 };
 
 export default nextConfig;
