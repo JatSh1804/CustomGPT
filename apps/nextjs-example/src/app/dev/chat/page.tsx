@@ -177,7 +177,6 @@ export default function AdvancedChatBoxComponent() {
     };
 
     useEffect(() => {
-        AptosClient();
         const initUser = async () => {
             const user = await getUser(supabase);
             if (!user) {
