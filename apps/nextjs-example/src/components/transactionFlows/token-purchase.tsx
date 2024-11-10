@@ -68,11 +68,12 @@ const TokenPurchase = () => {
             if (response && response.success) {  // Check if the transaction was successful
                 const userId = user.id; // Replace with the actual user ID
                 // Replace with the number of tokens to subtract
-
+                console.log('Debug:-->AuthId:', userId)
+                console.log('Debug:-->Updating the User tokens')
                 const { data: currentData, error: fetchError } = await supabase
-                    .from('your_table') // Replace with your table name
-                    .select('your_field') // Select the field you want to update
-                    .eq('condition_column', 'condition_value') // Specify your condition
+                    .from('user_profiles') // Replace with your table name
+                    .select('tokens_remaining') // Select the field you want to update
+                    .eq('auth_id', userId) // Specify your condition
                     .single(); // Fetch a single record
 
                 if (fetchError) {
@@ -80,12 +81,12 @@ const TokenPurchase = () => {
                     return;
                 }
 
-                const currentValue = currentData.your_field; // Get the current value
+                const currentValue = currentData.tokens_remaining; // Get the current value
                 const newValue = currentValue + 10; // Add 10 to the current value
 
                 const { data, error: updateError } = await supabase
                     .from('user_profiles') // Replace with your table name
-                    .update({ your_field: newValue }) // Update with the new value
+                    .update({ tokens_remaining: newValue }) // Update with the new value
                     .eq('tokens_remaining', user.id)
                     .select();
 
