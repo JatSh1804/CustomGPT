@@ -36,6 +36,7 @@ export const WalletProvider = ({ children }: PropsWithChildren) => {
   return (
     <AptosWalletAdapterProvider
       plugins={wallets}
+      // optInWallets={['Petra']}
       autoConnect={autoConnect}
       dappConfig={{
         network: Network.TESTNET,
