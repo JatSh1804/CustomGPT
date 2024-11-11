@@ -100,10 +100,10 @@ export default function Home() {
       )}
       {connected && (
         <>
-          <TransactionParameters />
           <TokenPurchase />
-          <SingleSigner />
           <Sponsor />
+          <TransactionParameters />
+          <SingleSigner />
           <MultiAgent />
         </>
       )}

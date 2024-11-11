@@ -38,7 +38,7 @@ const TokenPurchase = () => {
         }
 
         const recipientAddress = process.env.PLATFORM_WALLET_ADDRESS || '0xe25dad8c19ffaa8fc03696990b85acbd4adc9f8077ebf4a1d97eaf3a628a61b1'; // Replace with your platform wallet address
-        const amount = 1; // Amount of tokens to send (in smallest unit)
+        const amount = 500_000; // Amount of tokens to send (in smallest unit)
         console.log('Debug:-->SenderAddress:', account.address)
         console.log('Debug:-->RecipientAddress', recipientAddress);
 
