@@ -13,19 +13,27 @@ import { redirect } from 'next/navigation';
 import { InputTransactionData } from "@aptos-labs/wallet-adapter-core"
 
 import { tiers } from '@/app/subscription/tier';
-type TokenPurchaseProps = 'pro' | 'plus'
 
+type TokenPurchaseProps = 'pro' | 'plus'; // Define valid plan values for the component;
 
-const TokenPurchase:React.FC<TokenPurchaseProps> = ({plan}):({plan:'pro'|'plus'}) => {
+const TokenPurchase: React.FC<TokenPurchaseProps> = ({ plan }: { plan: 'plus' | 'pro' }) => {
     const { toast } = useToast();
 
-    const isValidPlan = (plan: string | null): plan is TokenPurchaseProps => {
-        return plan === 'plus' || plan === 'pro';
-    };
+    // const isValidPlan = (plan: string | null): plan is TokenPurchaseProps => {
+    //     return plan === 'plus' || plan === 'pro';
+    // };
 
 
 
     const [planCost, setPlanCost] = React.useState<'1_000_000', '5_000_000'>('1_000_000');
+    React.useEffect(() => {
+        if (plan == 'plus') {
+            setPlanCost('5_000_000')
+        } else {
+            setPlanCost(1_000_000)
+        }
+    }, [plan])
+
     const {
         account,
         connected,
@@ -122,9 +130,7 @@ const TokenPurchase:React.FC<TokenPurchaseProps> = ({plan}):({plan:'pro'|'plus'}
         } catch (error) {
             console.error('Transaction or update failed:', error);
         }
-        if (!plan && !isValidPlan(plan)) {
-            return <div>Invalid plan: {plan}</div>;
-        }
+
     };
 
     return (

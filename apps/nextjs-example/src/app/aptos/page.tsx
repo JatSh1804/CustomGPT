@@ -65,15 +65,15 @@ export default function Home() {
   const { account, connected, network, wallet, changeNetwork } = useWallet();
   const searchParams = useSearchParams();
   const isPlanType = (value: string): value is PlanType => {
-    return ["Free", "Plus", "Pro"].includes(value);
+    return ["plus", "pro"].includes(value);
   };
-  
+
   const planFromParams = searchParams.get("plan") || "Plus"; // Default to "Plus"
   const plan: PlanType = isPlanType(planFromParams) ? planFromParams : "plus";
 
 
   // Type guard to ensure plan is either 'plus' or 'pro'
- 
+
   useEffect(() => {
     console.log('Debug:-->Account Info:', account);
   }, [account])
