@@ -13,12 +13,13 @@ import { redirect } from 'next/navigation';
 import { InputTransactionData } from "@aptos-labs/wallet-adapter-core"
 
 import { tiers } from '@/app/subscription/tier';
-type PlanType = 'pro' | 'plus'
+type TokenPurchaseProps = 'pro' | 'plus'
 
-const TokenPurchase = (plan: 'plus' | 'pro') => {
+
+const TokenPurchase:React.FC<TokenPurchaseProps> = ({plan}):({plan:'pro'|'plus'}) => {
     const { toast } = useToast();
 
-    const isValidPlan = (plan: string | null): plan is PlanType => {
+    const isValidPlan = (plan: string | null): plan is TokenPurchaseProps => {
         return plan === 'plus' || plan === 'pro';
     };
 
@@ -31,7 +32,7 @@ const TokenPurchase = (plan: 'plus' | 'pro') => {
         signAndSubmitTransaction,
         network
     } = useWallet();
-    const getTokenByPlanName = (planName: PlanType) => {
+    const getTokenByPlanName = (planName: TokenPurchaseProps) => {
         const tier = tiers.find(tier => tier.name === planName);
         return tier ? tier.token : null; // Return the token if found, otherwise return null
     };

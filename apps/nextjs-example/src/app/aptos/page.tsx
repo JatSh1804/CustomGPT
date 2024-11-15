@@ -58,7 +58,7 @@ const isTelegramMiniApp = typeof window !== 'undefined' && (window as any).Teleg
 if (isTelegramMiniApp) {
   initTelegram();
 }
-type PlanType = 'plus' | 'pro';
+type PlanType = "plus" | "pro";
 
 
 export default function Home() {
