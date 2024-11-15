@@ -25,12 +25,12 @@ const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
 
 
 
-    const [planCost, setPlanCost] = React.useState<'1_000_000', '5_000_000'>('1_000_000');
+    const [planCost, setPlanCost] = React.useState<'1_000_000' | '5_000_000'>('1_000_000');
     React.useEffect(() => {
         if (plan == 'plus') {
             setPlanCost('5_000_000')
         } else {
-            setPlanCost(1_000_000)
+            setPlanCost('1_000_000')
         }
     }, [plan])
 
@@ -124,7 +124,7 @@ const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
                 };
                 console.log('Updated tokens:', data)
 
-                toast({ variant: 'success', title: 'Transaction Successfull!', description: `${tokens} are added in your ${<Link href='/profile'>profile</Link>}.` })
+                toast({ variant: 'default', title: 'Transaction Successfull!', description: `${tokens} are added in your ${<Link href='/profile'>profile</Link>}.` })
                 console.log('Tokens updated successfully');
             }
         } catch (error) {
