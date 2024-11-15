@@ -62,7 +62,7 @@ export default function Component() {
                         </div>}
                     <div className="flex flex-col gap-2 w-full">
                         <Button className="w-full">Manage Subscription</Button>
-                        <Link  href="/aptos">
+                        <Link  href="/subscription">
                             <Button variant="secondary" className="w-full">
                                 Buy More Tokens
                             </Button>
