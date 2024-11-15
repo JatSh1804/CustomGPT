@@ -19,7 +19,7 @@ export const tiers = [
     {
         name: "Plus",
         token:200,
-        price: "🪙0.5 APT",
+        price: "🪙0.1 APT",
         description: "Enhanced features for individuals",
         features: [
             "200 tokens per month",
@@ -39,7 +39,7 @@ export const tiers = [
         name: "Pro",
         token:500,
 
-        price: "🪙5 APT",
+        price: "🪙0.5 APT",
         description: "Premium features for power users",
         features: [
             "500 tokens per month",
