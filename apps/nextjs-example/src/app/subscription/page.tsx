@@ -181,7 +181,7 @@ export default function EnhancedMembershipPage() {
                                         </ul>
                                     </CardContent>
                                     <CardFooter>
-                                        <Link href={`/aptos?plan=${tier.name}`}>
+                                        <Link href={`/aptos?plan=${tier.name.toLowerCase()}`}>
                                             <Button disabled={loading} className="w-full" variant={tier.popular ? "default" : "outline"}>
                                                 {tier.buttonText}
                                             </Button>
