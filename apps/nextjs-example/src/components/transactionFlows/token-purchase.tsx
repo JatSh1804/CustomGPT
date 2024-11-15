@@ -16,7 +16,7 @@ import { tiers } from '@/app/subscription/tier';
 
 type TokenPurchaseProps = 'pro' | 'plus'; // Define valid plan values for the component;
 
-const TokenPurchase: React.FC<TokenPurchaseProps> = ({ plan }: { plan: 'plus' | 'pro' }) => {
+const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
     const { toast } = useToast();
 
     // const isValidPlan = (plan: string | null): plan is TokenPurchaseProps => {
