@@ -61,12 +61,12 @@ export default function Component() {
                             <h1 className="text-2xl font-bold">Wait, Loading your Tokens...</h1>
                         </div>}
                     <div className="flex flex-col gap-2 w-full">
-                        <Button className="w-full">Manage Subscription</Button>
-                        <Link  href="/subscription">
-                            <Button variant="secondary" className="w-full">
+                        <Link href="/subscription" prefetch={false}>
+                            <Button className="w-full">
                                 Buy More Tokens
                             </Button>
                         </Link>
+                        <Button variant={'secondary'} className="w-full">Manage Subscription</Button>
                     </div>
                 </div>
             </div>
