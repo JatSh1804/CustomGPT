@@ -25,12 +25,12 @@ const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
 
 
 
-    const [planCost, setPlanCost] = React.useState<'1_000_000' | '5_000_000'>('1_000_000');
+    const [planCost, setPlanCost] = React.useState<1_000_000 | 5_000_000>(1_000_000);
     React.useEffect(() => {
         if (plan == 'plus') {
-            setPlanCost('5_000_000')
+            setPlanCost(5_000_000)
         } else {
-            setPlanCost('1_000_000')
+            setPlanCost(1_000_000)
         }
     }, [plan])
 
@@ -136,18 +136,7 @@ const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
     return (
         <div>
             <h2>Token Purchase</h2>
-            <button onClick={handlePurchase} disabled={!connected}>
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Purchase tokens</CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex flex-wrap gap-4">
-                        <Button onClick={handlePurchase} disabled={!sendable}>
-                            Purchase tokens for our platform
-                        </Button>
-                    </CardContent>
-                </Card>
-            </button>
+          
         </div>
     );
 };
