@@ -22,9 +22,7 @@ const TokenPurchase = (plan: 'plus' | 'pro') => {
         return plan === 'plus' || plan === 'pro';
     };
 
-    if (!plan && !isValidPlan(plan)) {
-        return <div>Invalid plan: {plan}</div>;
-    }
+    
 
     const [planCost, setPlanCost] = React.useState<'1_000_000', '5_000_000'>('1_000_000');
     const {
@@ -122,6 +120,9 @@ const TokenPurchase = (plan: 'plus' | 'pro') => {
             }
         } catch (error) {
             console.error('Transaction or update failed:', error);
+        }
+        if (!plan && !isValidPlan(plan)) {
+            return <div>Invalid plan: {plan}</div>;
         }
     };
 
