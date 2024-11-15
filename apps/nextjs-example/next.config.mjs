@@ -5,6 +5,7 @@ const nextConfig = {
   // output: "export",
   // assetPrefix: isProd ? "/aptos-wallet-adapter" : "",
   // basePath: isProd ? "/aptos-wallet-adapter" : "",
+  missingSuspenseWithCSRBailout: false,
   reactStrictMode: true,
   transpilePackages: ["wallet-adapter-react", "wallet-adapter-plugin"],
   
