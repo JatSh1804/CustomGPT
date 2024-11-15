@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react"
 import { useAutoConnect } from "@/components/AutoConnectProvider";
 import { DisplayValue, LabelValueGrid } from "@/components/LabelValueGrid";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -9,6 +10,7 @@ import { SingleSigner } from "@/components/transactionFlows/SingleSigner";
 import { Sponsor } from "@/components/transactionFlows/Sponsor";
 import { TransactionParameters } from "@/components/transactionFlows/TransactionParameters";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useSearchParams } from 'next/navigation';
 import {
   Card,
   CardContent,
@@ -41,6 +43,8 @@ import { registerWallet } from "@aptos-labs/wallet-standard";
 import { useEffect } from "react";
 import TokenPurchase from "@/components/transactionFlows/token-purchase";
 
+
+
 // Example of how to register a browser extension wallet plugin.
 // Browser extension wallets should call registerWallet once on page load.
 // When you click "Connect Wallet", you should see "Example Wallet"
@@ -54,9 +58,18 @@ const isTelegramMiniApp = typeof window !== 'undefined' && (window as any).Teleg
 if (isTelegramMiniApp) {
   initTelegram();
 }
+type PlanType = 'plus' | 'pro';
+
 
 export default function Home() {
   const { account, connected, network, wallet, changeNetwork } = useWallet();
+  const searchParams = useSearchParams();
+  const plan = searchParams.get('plan') || 'plus';
+
+
+
+  // Type guard to ensure plan is either 'plus' or 'pro'
+ 
   useEffect(() => {
     console.log('Debug:-->Account Info:', account);
   }, [account])
@@ -100,7 +113,7 @@ export default function Home() {
       )}
       {connected && (
         <>
-          <TokenPurchase />
+          <TokenPurchase plan={plan} />
           <Sponsor />
           <TransactionParameters />
           <SingleSigner />

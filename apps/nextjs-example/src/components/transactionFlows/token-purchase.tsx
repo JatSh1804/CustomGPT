@@ -1,5 +1,7 @@
 // app/components/TokenPurchase.tsx
 import React from 'react';
+import Link from 'next/link'
+
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
@@ -9,15 +11,34 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { useToast } from '../ui/use-toast';
 import { redirect } from 'next/navigation';
 import { InputTransactionData } from "@aptos-labs/wallet-adapter-core"
-const TokenPurchase = () => {
+
+import { tiers } from '@/app/subscription/page';
+type PlanType = 'pro' | 'plus'
+
+const TokenPurchase = (plan: 'plus' | 'pro') => {
     const { toast } = useToast();
 
+    const isValidPlan = (plan: string | null): plan is PlanType => {
+        return plan === 'plus' || plan === 'pro';
+    };
+
+    if (!plan && !isValidPlan(plan)) {
+        return <div>Invalid plan: {plan}</div>;
+    }
+
+    const [planCost, setPlanCost] = React.useState<'1_000_000', '5_000_000'>('1_000_000');
     const {
         account,
         connected,
         signAndSubmitTransaction,
         network
     } = useWallet();
+    const getTokenByPlanName = (planName: PlanType) => {
+        const tier = tiers.find(tier => tier.name === planName);
+        return tier ? tier.token : null; // Return the token if found, otherwise return null
+    };
+
+    const tokens = getTokenByPlanName(plan);
 
     let sendable = isSendableNetwork(connected, network?.name);
     const supabase = createClient();
@@ -38,7 +59,7 @@ const TokenPurchase = () => {
         }
 
         const recipientAddress = process.env.PLATFORM_WALLET_ADDRESS || '0xe25dad8c19ffaa8fc03696990b85acbd4adc9f8077ebf4a1d97eaf3a628a61b1'; // Replace with your platform wallet address
-        const amount = 500_000; // Amount of tokens to send (in smallest unit)
+        const amount = planCost; // Amount of tokens to send (in smallest unit)
         console.log('Debug:-->SenderAddress:', account.address)
         console.log('Debug:-->RecipientAddress', recipientAddress);
 
@@ -87,15 +108,16 @@ const TokenPurchase = () => {
                 const { data, error: updateError } = await supabase
                     .from('user_profiles') // Replace with your table name
                     .update({ tokens_remaining: newValue }) // Update with the new value
-                    .eq('auth_id',userId)
+                    .eq('auth_id', userId)
                     .select();
 
 
                 if (updateError) {
-                    console.log('Debug:-->Got an error while Updating tokens:',updateError)
+                    console.log('Debug:-->Got an error while Updating tokens:', updateError)
                 };
                 console.log('Updated tokens:', data)
 
+                toast({ variant: 'success', title: 'Transaction Successfull!', description: `${tokens} are added in your ${<Link href='/profile'>profile</Link>}.` })
                 console.log('Tokens updated successfully');
             }
         } catch (error) {

@@ -14,31 +14,31 @@ import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
 import { redirect } from 'next/navigation'
 
-const tiers = [
+export const tiers = [
     {
         name: "Free",
-        price: "$0",
+        price: "0 APT",
+        token:10,
         description: "Basic access to our platform",
         features: [
-            "100 tokens per month",
-            "Access to basic models",
+            "10 tokens per month",
             "Standard support",
             "1 concurrent project",
         ],
         notIncluded: [
             "Advanced models",
             "Priority support",
-            "Team collaboration",
         ],
         buttonText: "Get Started",
         popular: false,
     },
     {
         name: "Plus",
-        price: "$10",
+        token:200,
+        price: "🪙1 APT",
         description: "Enhanced features for individuals",
         features: [
-            "1,000 tokens per month",
+            "200 tokens per month",
             "Access to advanced models",
             "Priority email support",
             "5 concurrent projects",
@@ -53,10 +53,12 @@ const tiers = [
     },
     {
         name: "Pro",
-        price: "$49",
+        token:500,
+
+        price: "🪙5 APT",
         description: "Premium features for power users",
         features: [
-            "10,000 tokens per month",
+            "500 tokens per month",
             "Access to all models",
             "24/7 priority support",
             "Unlimited concurrent projects",
@@ -100,7 +102,7 @@ export default function EnhancedMembershipPage() {
             }
             setLoading(false);
         };
-        fetchSubscription();
+        // fetchSubscription();
     }, [supabase]);
 
     const handleUpgrade = async (tier: 'Plus' | 'Pro') => {
@@ -236,9 +238,11 @@ export default function EnhancedMembershipPage() {
                                         </ul>
                                     </CardContent>
                                     <CardFooter>
-                                        <Button onClick={() => handleUpgrade(tier.name as 'Plus' | 'Pro')} disabled={loading} className="w-full" variant={tier.popular ? "default" : "outline"}>
-                                            {tier.buttonText}
-                                        </Button>
+                                        <Link href={`/aptos?plan=${tier.name}`}>
+                                            <Button disabled={loading} className="w-full" variant={tier.popular ? "default" : "outline"}>
+                                                {tier.buttonText}
+                                            </Button>
+                                        </Link>
                                     </CardFooter>
                                 </Card>
                             ))}
