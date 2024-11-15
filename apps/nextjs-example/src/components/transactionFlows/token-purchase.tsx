@@ -12,7 +12,7 @@ import { useToast } from '../ui/use-toast';
 import { redirect } from 'next/navigation';
 import { InputTransactionData } from "@aptos-labs/wallet-adapter-core"
 
-import { tiers } from '@/app/subscription/page';
+import { tiers } from '@/app/subscription/tier';
 type PlanType = 'pro' | 'plus'
 
 const TokenPurchase = (plan: 'plus' | 'pro') => {
@@ -22,7 +22,7 @@ const TokenPurchase = (plan: 'plus' | 'pro') => {
         return plan === 'plus' || plan === 'pro';
     };
 
-    
+
 
     const [planCost, setPlanCost] = React.useState<'1_000_000', '5_000_000'>('1_000_000');
     const {
