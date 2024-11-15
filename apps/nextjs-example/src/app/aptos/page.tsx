@@ -64,8 +64,12 @@ type PlanType = "plus" | "pro";
 export default function Home() {
   const { account, connected, network, wallet, changeNetwork } = useWallet();
   const searchParams = useSearchParams();
-  const plan:PlanType = searchParams.get('plan') || 'plus';
-
+  const isPlanType = (value: string): value is PlanType => {
+    return ["Free", "Plus", "Pro"].includes(value);
+  };
+  
+  const planFromParams = searchParams.get("plan") || "Plus"; // Default to "Plus"
+  const plan: PlanType = isPlanType(planFromParams) ? planFromParams : "plus";
 
 
   // Type guard to ensure plan is either 'plus' or 'pro'
