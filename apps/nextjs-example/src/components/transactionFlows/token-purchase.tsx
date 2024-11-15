@@ -25,12 +25,12 @@ const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
 
 
 
-    const [planCost, setPlanCost] = React.useState<5_000_000 | 1_000_000>(1_000_000);
+    const [planCost, setPlanCost] = React.useState<50_000_000 | 10_000_000>(10_000_000);
     React.useEffect(() => {
         if (plan == 'plus') {
-            setPlanCost(1_000_000)
+            setPlanCost(10_000_000)
         } else {
-            setPlanCost(5_000_000)
+            setPlanCost(50_000_000)
         }
     }, [plan])
 
