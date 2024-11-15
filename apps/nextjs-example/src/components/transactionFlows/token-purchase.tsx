@@ -26,8 +26,8 @@ const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
 
 
     const [planCost, setPlanCost] = React.useState<50_000_000 | 10_000_000>(10_000_000);
-    const [newToken,setNewToken]=React.useState<200|500>(200)
-    
+    const [newToken, setNewToken] = React.useState<200 | 500>(200)
+
     React.useEffect(() => {
         if (plan == 'plus') {
             setPlanCost(10_000_000)
@@ -115,7 +115,7 @@ const TokenPurchase = ({ plan }: { plan: 'plus' | 'pro' }) => {
                 }
 
                 const currentValue = currentData.tokens_remaining; // Get the current value
-                const newValue = currentValue + ; // Add 10 to the current value
+                const newValue = currentValue + newToken; // Add 10 to the current value
 
                 const { data, error: updateError } = await supabase
                     .from('user_profiles') // Replace with your table name
